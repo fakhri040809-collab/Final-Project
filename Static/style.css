@@ -1,0 +1,122 @@
+body{
+          background-color: lightblue;
+          font-family: 'Quicksand', sans-serif;
+          margin: 20px;
+}
+
+nav{
+          background-color: #ffabeb;
+          color: #fff;
+          padding: 10px;
+          text-align: center;
+}
+
+nav a{
+          color: #000;
+          text-decoration: none;
+          margin: 0 10px;
+}
+
+h1{
+          color: #333;
+          text-align: center;
+}
+
+h2{
+          color: #333;
+          text-align: center;
+}
+
+img{
+          display: block;
+          margin: 0 auto;
+          border-radius: 25%;
+          border: 10px solid hsl(257, 100%, 50%);
+
+}
+
+form{
+          background-color: #fff;
+          padding: 20px;
+          border-radius: 5px;
+          box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+          max-width: 400px;
+          margin: 20px auto;
+}
+
+button, button a{
+          background-color: #e399fc;
+          color: #fff;
+          border: none;
+          padding: 10px 20px;
+          border-radius: 5px;
+          cursor: pointer;
+          font-family: 'Poppins', sans-serif;
+}
+
+a {
+    text-decoration: none;
+}
+
+.project-gallery{
+          display: grid;
+          grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+          gap: 20px;
+}
+
+.project-card{
+          background-color:rgb(255, 255, 182);
+          border-radius: 5px;
+          box-shadow: 0 2px 5px rgba(0, 0, 0, 1);
+          max-width: 400px;
+          margin: 20px auto;
+}
+
+.project-header{
+    text-align: center;
+    margin: 40px 0;
+}
+.project-card img{
+    width: 100%;
+    height: 180px;
+    object-fit: cover;
+    border: none;
+    border-radius: 0;
+}
+.project-content{
+    padding: 20px;
+}
+.project-content button {
+    margin-top: 5px;
+}
+
+@media(min-width: 801px) {
+          .project-gallery{
+                    grid-template-columns: repeat(3, 1fr);
+          }
+
+}
+
+@media (min-width: 600px) and (max-width: 800px) {
+          nav a{
+          .project-gallery{
+                    grid-template-columns: repeat(2, 1fr);
+          }
+}
+
+@media (max-width: 600px) {
+          nav{
+                   flex-direction: column;
+                   align-items: center;
+          }
+
+          nav a{
+                    margin: 5px 0;
+          }
+          .project-gallery{
+                    grid-template-columns: 1fr;
+          }
+          .project-card{
+                    max-width: 90%;
+          }
+}

@@ -1,0 +1,91 @@
+{% extends "base.html" %}
+{% block title %}Personal Finance Tracker{% endblock %}
+{% block content %}
+
+<h1>Personal Finance Tracker</h1>
+<p>Catat pemasukan dan pengeluaranmu.</p>
+
+{% if error %}
+    <p style="color: red;">{{ error }}</p>
+{% endif %}
+
+<div class="summary">
+    <div class="box">
+        <h3>Saldo</h3>
+        <p>Rp {{ "{:,.0f}".format(saldo) }}</p>
+    </div>
+    <div class="box">
+        <h3>Total Pemasukan</h3>
+        <p>Rp {{ "{:,.0f}".format(total_in) }}</p>
+    </div>
+    <div class="box">
+        <h3>Total Pengeluaran</h3>
+        <p>Rp {{ "{:,.0f}".format(total_out) }}</p>
+    </div>
+</div>
+<hr>
+
+<h2>Tambah Transaksi</h2>
+<form method="POST">
+    <label>Tipe</label>
+    <select name="type">
+        <option value="masuk">Pemasukan</option>
+        <option value="keluar">Pengeluaran</option>
+    </select>
+    <br><br>
+
+    <label>Deskripsi</label>
+    <input
+        type="text"
+        name="desc"
+        placeholder="Contoh: Gaji"
+        required
+    >
+    <br><br>
+    <label>Jumlah</label>
+    <input
+        type="number"
+        name="amount"
+        min="1000"
+        placeholder="Contoh: 500000"
+        required
+    >
+    <br><br>
+    <button type="submit">Tambah Transaksi</button>
+</form>
+<hr>
+
+
+<h2>Daftar Transaksi</h2>
+<table border="1" cellpadding="10">
+    <tr>
+        <th>No</th>
+        <th>Tipe</th>
+        <th>Deskripsi</th>
+        <th>Jumlah</th>
+        <th>Aksi</th>
+    </tr>
+    {% for t in transactions %}
+    <tr class="{{ 'masuk' if t.type == 'masuk' else 'keluar' }}">
+        <td>{{ loop.index }}</td>
+        <td>
+            {% if t.type == 'masuk' %}
+                Pemasukan
+            {% else %}
+                Pengeluaran
+            {% endif %}
+        </td>
+        <td>{{ t.desc }}</td>
+        <td>
+            Rp {{ "{:,.0f}".format(t.amount) }}
+        </td>
+        <td>
+            <a href="{{ url_for('hapus', index=loop.index0) }}">
+                Hapus
+            </a>
+        </td>
+    </tr>
+    {% endfor %}
+</table>
+
+{% endblock %}

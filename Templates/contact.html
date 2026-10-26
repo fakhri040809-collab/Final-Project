@@ -1,0 +1,24 @@
+{% extends "base.html" %}
+{% block title %}Contact{% endblock %}
+{% block content %}
+
+        <h1>Hubungi saya!</h1>
+        <p>Masukan pesanmu di Form di bawah ini:</p>
+        <form action="#" method="post">
+            <label>Nama:</label>
+            <input type="text" id="name" name="name"> <br>
+
+            <label>Email:</label>
+            <input type="email" id="email" name="email"> <br>
+
+            <label>Pesan:</label><br>
+            <textarea id="message" name="message"></textarea> <br>
+
+            <button type="submit">Kirim</button>
+            <button type="reset">Reset</button>
+            <button type="button" onclick="window.location.href='index.html'">Kembali</button>
+        </form>
+        <p>Anda bisa menghubungi saya melalui email atau telepon</p>
+        <hr>
+
+{% endblock %}

@@ -1,0 +1,34 @@
+{% extends "base.html" %}
+{% block title %}To Do List App{% endblock %}
+{% block content %}
+
+<h3>TO DO LIST APP</h3>
+
+{% if edit_index is defined %} <!-- membuat logika jika ingin mengedit data -->
+<form method="post" action="/todo/edit/{{ edit_index }}"> 
+    <input type="text" name="item" value="{{ edit_value }}" required>
+    <button>Simpan</button>
+    <a href="/todo">Batal</a>
+</form>
+{% else %} <!-- membuat logika jika ingin menambah data -->
+<form method="post" action="/todo">
+    <input type="text" name="item" placeholder="Tulis kegiatan/to do.." required>
+    <button>Tambah</button>
+</form>
+{% endif %}
+
+<ul>
+    {% for t in todos %}
+    <li>
+        <span>{{ t }}</span>
+        <div>
+            <a href="/todo/edit/{{ loop.index0 }}">Edit</a>
+            <a href="/todo/hapus/{{ loop.index0 }}">Hapus</a>
+        </div>
+    </li>
+    {% else %}
+    <li>Belum ada data.</li>
+    {% endfor %}
+</ul>
+
+{% endblock %}
